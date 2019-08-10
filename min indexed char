@@ -1,0 +1,37 @@
+void printMinIndexChar(string str, string patt)
+{
+    
+    int n=str.length();
+    pair<int,int> count[256];
+    
+    for(int i=0;i<n;i++)
+    {
+        if(count[str[i]].first==0)
+        {
+           count[str[i]].second=i; 
+        }
+        count[str[i]].first++;
+    }
+    int m=patt.length();
+    
+    int mi=9999;
+    char c;
+    bool flag=false;
+    
+    for(int i=0;i<m;i++)
+    {
+        if(count[patt[i]].first>0)
+        {
+            flag=true;
+            if(count[patt[i]].second<mi)
+            {
+                mi=count[patt[i]].second;
+                c=str[count[patt[i]].second];
+            }
+        }
+    }
+    if(flag)
+    cout<<c;
+    else
+    cout<<"No character present";
+}
