@@ -1,0 +1,27 @@
+int repeatedCharacter (string s) 
+{ 
+    pair<int,int> arr[256];
+    int n=s.length();
+    for(int i=0;i<n;i++)
+    {
+        if(arr[s[i]].first==0)
+        {
+            arr[s[i]].second=i;
+        }
+        arr[s[i]].first++;
+    }
+
+    int r=9999;
+    bool flag=false;
+    for(int i=0;i<256;i++)
+    {
+        if(arr[i].first>1)
+        {   flag=true;
+            if(r>arr[i].second)
+            r=arr[i].second;
+        }
+    }
+    if(flag)
+    return r;
+    return -1;
+} 
