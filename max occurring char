@@ -1,0 +1,45 @@
+{
+#include<bits/stdc++.h>
+using namespace std;
+char getMaxOccuringChar(char*);
+int main()
+{
+   
+    char str[100];
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+    	scanf("%s",str);
+    cout<< getMaxOccuringChar(str)<<endl;
+    }
+}
+}
+/*This is a function problem.You only need to complete the function given below*/
+// Function to get maximum occuring 
+// character in given string str
+char getMaxOccuringChar(char* s)
+{ 
+    int n=0;
+    int arr[256]={0};
+    for(int i=0;s[i]!='\0';i++)
+    n++;
+
+    
+    for(int i=0;s[i]!='\0';i++)
+    {
+        arr[s[i]]++;
+    }
+
+    int r=0;
+    char c;
+    for(int i=0;i<256;i++)
+    {
+        if(arr[i]>r)
+        {
+            r=arr[i];
+            c=i;
+        }
+    }
+    return c;
+}
