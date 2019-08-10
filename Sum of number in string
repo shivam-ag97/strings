@@ -1,0 +1,30 @@
+#include<stack>
+int findSum(string str)
+{
+    stack<int> s;
+    int r=0;
+    int temp=0;
+    int n=str.length();
+    
+    for(int i=0;i<=n;i++)
+    {
+        if(isdigit(str[i]))
+        {
+            s.push(str[i]-48);
+        }
+        else
+        {
+            int c=1;
+            while(!s.empty())
+            {   
+                temp=temp+(s.top()*c);
+                c=c*10;
+                s.pop();
+            }
+        }
+        r=r+temp;
+        temp=0;
+    }
+    return r;
+    
+}
